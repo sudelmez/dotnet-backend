@@ -38,8 +38,16 @@ public class WeatherForecastController : ControllerBase
             return Unauthorized("Invalid email or password.");
         }
         _logger.LogInformation("User {Email} logged in successfully", user.Email);
-        return Ok(user);
-
+        // return Ok(user);
+        return Ok(new
+        {
+            user = new
+            {
+                user.Email,
+                user.Name,
+                user.LastName,
+            },
+        });
 
     }
 
