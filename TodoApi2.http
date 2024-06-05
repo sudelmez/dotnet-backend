@@ -6,4 +6,12 @@ Accept: application/json
 POST {{TodoApi2_HostAddress}}/login/
 Content-Type: application/json
 
+POST {{TodoApi2_HostAddress}}/users/
+Content-Type: application/json
+
+POST {{TodoApi2_HostAddress}}/delete/
+Content-Type: application/json
+
 ###
+
+

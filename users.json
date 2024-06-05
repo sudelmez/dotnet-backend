@@ -4,69 +4,59 @@
         "CreatedDate": "01/06/2024",
         "Name": "John",
         "LastName": "Doe",
+        "Client": "Hepiyi",
         "AuthorizedProducts": [
             "101,102"
-        ],
-        "Client": "Hepiyi"
+        ]
     },
     {
         "Id": 2,
         "CreatedDate": "02/06/2024",
         "Name": "Mary",
         "LastName": "Jane",
+        "Client": "Aksigorta",
         "AuthorizedProducts": [
             "101,104"
-        ],
-        "Client": "Aksigorta"
+        ]
     },
     {
         "Id": 3,
         "CreatedDate": "03/06/2024",
-        "Name": "Ayşe",
-        "LastName": "Gül",
+        "Name": "Ay\u015Fe",
+        "LastName": "G\u00FCl",
+        "Client": "Allianz",
         "AuthorizedProducts": [
             "102"
-        ],
-        "Client": "Allianz"
-    },
-    {
-        "Id": 4,
-        "CreatedDate": "04/06/2024",
-        "Name": "Merve",
-        "LastName": "Yılmaz",
-        "AuthorizedProducts": [
-            "102,103"
-        ],
-        "Client": "Garanti"
+        ]
     },
     {
         "Id": 5,
         "CreatedDate": "05/06/2024",
         "Name": "Sude",
-        "LastName": "Ölmez",
+        "LastName": "\u00D6lmez",
+        "Client": "Yap\u0131 Kredi",
         "AuthorizedProducts": [
             "103,104"
-        ],
-        "Client": "Yapı Kredi"
+        ]
     },
     {
         "Id": 6,
         "CreatedDate": "06/06/2024",
         "Name": "Hatice",
-        "LastName": "Yürek",
+        "LastName": "Y\u00FCrek",
+        "Client": "Deniz",
         "AuthorizedProducts": [
             "102"
-        ],
-        "Client": "Deniz"
+        ]
     },
     {
         "Id": 7,
         "CreatedDate": "07/06/2024",
         "Name": "Bella",
         "LastName": "Brown",
+        "Client": "Akbank",
         "AuthorizedProducts": [
             "104"
-        ],
-        "Client": "Akbank"
+        ]
     }
 ]
