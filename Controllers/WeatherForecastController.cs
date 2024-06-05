@@ -10,13 +10,19 @@ public class WeatherForecastController : ControllerBase
     {
         _logger = logger;
     }
-    private IEnumerable<User> GetUsersFromJsonFile()
+    private IEnumerable<User> GetUserFromJsonFile()
     {
         var filePath = Path.Combine("././loginuser.json");
-        // var filePath = Path.Combine("././users.json");
         var jsonString = System.IO.File.ReadAllText(filePath);
         var user = JsonSerializer.Deserialize<List<User>>(jsonString);
         return user;
+    }
+    private IEnumerable<Users> GetUsersFromJsonFile()
+    {
+        var filePath = Path.Combine("././users.json");
+        var jsonString = System.IO.File.ReadAllText(filePath);
+        var users = JsonSerializer.Deserialize<List<Users>>(jsonString);
+        return users;
     }
 
     [HttpPost("login")]
@@ -28,7 +34,7 @@ public class WeatherForecastController : ControllerBase
         }
         _logger.LogInformation("Received login request: Email = {Email}, Password = {Password}", request.Email, request.Password);
 
-        var users = GetUsersFromJsonFile();
+        var users = GetUserFromJsonFile();
         var user = users.FirstOrDefault(u => u.Email == request.Email && u.Password == request.Password);
         _logger.LogInformation("Users read from JSON: {Users}", users);
 
@@ -38,7 +44,6 @@ public class WeatherForecastController : ControllerBase
             return Unauthorized("Invalid email or password.");
         }
         _logger.LogInformation("User {Email} logged in successfully", user.Email);
-        // return Ok(user);
         return Ok(new
         {
             user = new
@@ -46,17 +51,18 @@ public class WeatherForecastController : ControllerBase
                 user.Email,
                 user.Name,
                 user.LastName,
+                user.Token
             },
         });
 
     }
 
     [HttpGet(Name = "get")]
-    public IEnumerable<User> Get()
+    public IEnumerable<Users> Get()
     {
-        {
-            var users = GetUsersFromJsonFile();
-            return users;
-        }
+
+        var users = GetUsersFromJsonFile();
+        return users;
+
     }
 }

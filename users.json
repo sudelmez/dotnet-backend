@@ -1,79 +1,72 @@
 [
     {
-        "id": 1,
-        "createdDate": "01/06/2024",
-        "email": "john@gmail.com",
-        "password": "qwerty",
-        "name": "John",
-        "lastName": "Doe",
-        "authorizedProducts": [
+        "Id": 1,
+        "CreatedDate": "01/06/2024",
+        "Name": "John",
+        "LastName": "Doe",
+        "AuthorizedProducts": [
             "101,102"
-        ]
+        ],
+        "Client": "Hepiyi"
     },
     {
-        "id": 2,
-        "createdDate": "02/06/2024",
-        "email": "mary@gmail.com",
-        "password": "qwerty",
-        "name": "Mary",
-        "lastName": "Jane",
-        "authorizedProducts": [
+        "Id": 2,
+        "CreatedDate": "02/06/2024",
+        "Name": "Mary",
+        "LastName": "Jane",
+        "AuthorizedProducts": [
             "101,104"
-        ]
+        ],
+        "Client": "Aksigorta"
     },
     {
-        "id": 3,
-        "createdDate": "03/06/2024",
-        "email": "ayse@gmail.com",
-        "password": "qwerty",
-        "name": "Ayşe",
-        "lastName": "Gül",
-        "authorizedProducts": [
+        "Id": 3,
+        "CreatedDate": "03/06/2024",
+        "Name": "Ayşe",
+        "LastName": "Gül",
+        "AuthorizedProducts": [
             "102"
-        ]
+        ],
+        "Client": "Allianz"
     },
     {
-        "id": 4,
-        "createdDate": "04/06/2024",
-        "email": "merve@gmail.com",
-        "password": "qwerty",
-        "name": "Merve",
-        "lastName": "Yılmaz",
-        "authorizedProducts": [
+        "Id": 4,
+        "CreatedDate": "04/06/2024",
+        "Name": "Merve",
+        "LastName": "Yılmaz",
+        "AuthorizedProducts": [
             "102,103"
-        ]
+        ],
+        "Client": "Garanti"
     },
     {
-        "id": 5,
-        "createdDate": "05/06/2024",
-        "email": "sude@gmail.com",
-        "password": "qwerty",
-        "name": "Sude",
-        "lastName": "Ölmez",
-        "authorizedProducts": [
+        "Id": 5,
+        "CreatedDate": "05/06/2024",
+        "Name": "Sude",
+        "LastName": "Ölmez",
+        "AuthorizedProducts": [
             "103,104"
-        ]
+        ],
+        "Client": "Yapı Kredi"
     },
     {
-        "id": 6,
-        "createdDate": "06/06/2024",
-        "name": "Hatice",
-        "email": "hatice@gmail.com",
-        "password": "qwerty",
-        "lastName": "Yürek",
-        "authorizedProducts": [
+        "Id": 6,
+        "CreatedDate": "06/06/2024",
+        "Name": "Hatice",
+        "LastName": "Yürek",
+        "AuthorizedProducts": [
             "102"
-        ]
+        ],
+        "Client": "Deniz"
     },
     {
-        "id": 7,
-        "createdDate": "07/06/2024",
-        "email": "bella@gmail.com",
-        "password": "qwerty",
-        "name": "Bella",
-        "lastName": "Brown",
-        "authorizedProducts": [
+        "Id": 7,
+        "CreatedDate": "07/06/2024",
+        "Name": "Bella",
+        "LastName": "Brown",
+        "AuthorizedProducts": [
             "104"
-        ]
+        ],
+        "Client": "Akbank"
     }
 ]
