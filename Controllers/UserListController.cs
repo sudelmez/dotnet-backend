@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using System.Text.Json;
+using TodoApi2.Data;
+using TodoApi2.Serializers;
 namespace TodoApi2.Controllers;
 [Route("[controller]")]
 [ApiController]
@@ -7,9 +11,13 @@ namespace TodoApi2.Controllers;
 public class UserListController : ControllerBase
 {
     private readonly ILogger<UserListController> _logger;
-    public UserListController(ILogger<UserListController> logger)
+    private MongoDbService _mongoDbService;
+    private BsonStringNumericSerializer _serializer;
+    public UserListController(ILogger<UserListController> logger, MongoDbService mongoDbService, BsonStringNumericSerializer serializer)
     {
         _logger = logger;
+        _mongoDbService = mongoDbService;
+        _serializer = serializer;
     }
     private IEnumerable<User> GetUsersFromJsonFile()
     {
@@ -40,10 +48,33 @@ public class UserListController : ControllerBase
         return Ok();
     }
 
+    // [HttpGet(Name = "get")]
+    // public IEnumerable<User> Get()
+    // {
+    //     var users = GetUsersFromJsonFile();
+    //     return users;
+    // }
+
     [HttpGet(Name = "get")]
     public IEnumerable<User> Get()
     {
-        var users = GetUsersFromJsonFile();
-        return users;
+        var users = _mongoDbService.Get();
+        _logger.LogInformation("Received users {users}", users);
+        var userList = new List<User>();
+        foreach (var doc in users)
+        {
+            var user = BsonSerializer.Deserialize<User>(doc);
+            // user.Id = doc["_id"].AsObjectId.GetHashCode();
+            userList.Add(user);
+        }
+        return userList;
     }
+
+    // [HttpGet(Name = "getById")]
+    // public ActionResult<User> GetById(User user)
+    // {
+    //     string id = user.Id.ToString();
+    //     User receivedUser = BsonSerializer.Deserialize<User>(_mongoDbService.GetById(id));
+    //     return receivedUser;
+    // }
 }

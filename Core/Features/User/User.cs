@@ -1,8 +1,13 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace TodoApi2;
 
 public class User
 {
-    public int Id { get; set; }
+    [BsonRepresentation(BsonType.ObjectId)]
+    // public ObjectId _id { get; set; }
+    public ObjectId Id { get; set; }
     public string Email { get; set; }
     public string Name { get; set; }
     public string Password { get; set; }
