@@ -1,62 +1,80 @@
 [
     {
         "Id": 1,
-        "CreatedDate": "01/06/2024",
+        "Email": null,
         "Name": "John",
+        "Password": null,
         "LastName": "Doe",
+        "Token": null,
         "Client": "Hepiyi",
         "AuthorizedProducts": [
-            "101,102"
-        ]
+            "101,104"
+        ],
+        "CreatedDate": "02/06/2024"
     },
     {
         "Id": 2,
-        "CreatedDate": "02/06/2024",
+        "Email": null,
         "Name": "Mary",
+        "Password": null,
         "LastName": "Jane",
+        "Token": null,
         "Client": "Aksigorta",
         "AuthorizedProducts": [
             "101,104"
-        ]
-    },
-    {
-        "Id": 3,
-        "CreatedDate": "03/06/2024",
-        "Name": "Ay\u015Fe",
-        "LastName": "G\u00FCl",
-        "Client": "Allianz",
-        "AuthorizedProducts": [
-            "102"
-        ]
+        ],
+        "CreatedDate": "02/06/2024"
     },
     {
         "Id": 5,
-        "CreatedDate": "05/06/2024",
+        "Email": null,
         "Name": "Sude",
-        "LastName": "\u00D6lmez",
-        "Client": "Yap\u0131 Kredi",
+        "Password": null,
+        "LastName": "Olmez",
+        "Token": null,
+        "Client": "Yapi Kredi",
         "AuthorizedProducts": [
             "103,104"
-        ]
+        ],
+        "CreatedDate": "05/06/2024"
     },
     {
         "Id": 6,
-        "CreatedDate": "06/06/2024",
+        "Email": null,
         "Name": "Hatice",
-        "LastName": "Y\u00FCrek",
+        "Password": null,
+        "LastName": "Yurek",
+        "Token": null,
         "Client": "Deniz",
         "AuthorizedProducts": [
             "102"
-        ]
+        ],
+        "CreatedDate": "06/06/2024"
     },
     {
         "Id": 7,
-        "CreatedDate": "07/06/2024",
+        "Email": null,
         "Name": "Bella",
+        "Password": null,
         "LastName": "Brown",
+        "Token": null,
         "Client": "Akbank",
         "AuthorizedProducts": [
             "104"
-        ]
+        ],
+        "CreatedDate": "07/06/2024"
+    },
+    {
+        "Id": 8,
+        "Email": null,
+        "Name": "Cemil",
+        "Password": null,
+        "LastName": "Brown",
+        "Token": null,
+        "Client": "Akbank",
+        "AuthorizedProducts": [
+            "104"
+        ],
+        "CreatedDate": "07/06/2024"
     }
 ]

@@ -1,27 +1,40 @@
+using TodoApi2.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using MongoDB.Bson;
 namespace TodoApi2.Controllers;
 [Route("[controller]")]
 [ApiController]
 
 public class UserListController : ControllerBase
 {
-    private readonly ILogger<UserListController> _logger;
-    public UserListController(ILogger<UserListController> logger)
+    private readonly MongoDbService _mongoDbService;
+
+    public UserListController(MongoDbService mongoDbService)
     {
-        _logger = logger;
+        _mongoDbService = mongoDbService;
     }
-    private IEnumerable<Users> GetUsersFromJsonFile()
+
+    private IEnumerable<User> GetUsersFromJsonFile()
     {
         var filePath = Path.Combine("./././users.json");
 
         var jsonString = System.IO.File.ReadAllText(filePath);
-        var users = JsonSerializer.Deserialize<List<Users>>(jsonString);
+        var users = JsonSerializer.Deserialize<List<User>>(jsonString);
         return users;
     }
 
+    [HttpGet("get")]
+    public IActionResult GetAllUsers()
+    {
+        var users = _mongoDbService.GetAllUsers();
+        // var userList = JsonSerializer.Deserialize<List<User>>(users);
+        var u = users.ConvertAll(BsonTypeMapper.MapToDotNetValue);
+        return Ok(users);
+    }
+
     [HttpPost("update")]
-    public IActionResult Update([FromBody] List<Users> users)
+    public IActionResult Update([FromBody] List<User> users)
     {
         var filePath = Path.Combine("././users.json");
         string newList = JsonSerializer.Serialize(users);
@@ -32,7 +45,7 @@ public class UserListController : ControllerBase
     }
 
     [HttpPost("delete")]
-    public IActionResult Delete(Users request)
+    public IActionResult Delete(User request)
     {
         var users = GetUsersFromJsonFile();
         var newUsers = users.Where(u => u.Id != request.Id).ToList();
@@ -40,10 +53,10 @@ public class UserListController : ControllerBase
         return Ok();
     }
 
-    [HttpGet(Name = "get")]
-    public IEnumerable<Users> Get()
-    {
-        var users = GetUsersFromJsonFile();
-        return users;
-    }
+    // [HttpGet(Name = "get")]
+    // public IEnumerable<User> Get()
+    // {
+    //     var users = GetUsersFromJsonFile();
+    //     return (IEnumerable<User>)users;
+    // }
 }

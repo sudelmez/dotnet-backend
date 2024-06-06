@@ -5,6 +5,11 @@
         "Name": "John",
         "Password": "qwerty",
         "LastName": "Doe",
-        "Token": "1"
+        "Token": "1",
+        "Client": "Hepiyi",
+        "AuthorizedProducts": [
+            "101,102"
+        ],
+        "CreatedDate": "01/06/2024"
     }
 ]

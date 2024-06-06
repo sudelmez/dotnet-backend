@@ -1,0 +1,80 @@
+[
+    {
+        "Id": 1,
+        "Email": null,
+        "Name": "John",
+        "Password": null,
+        "LastName": "Doe",
+        "Token": null,
+        "Client": "Hepiyi",
+        "AuthorizedProducts": [
+            "101,104"
+        ],
+        "CreatedDate": "02/06/2024"
+    },
+    {
+        "Id": 2,
+        "Email": null,
+        "Name": "Mary",
+        "Password": null,
+        "LastName": "Jane",
+        "Token": null,
+        "Client": "Aksigorta",
+        "AuthorizedProducts": [
+            "101,104"
+        ],
+        "CreatedDate": "02/06/2024"
+    },
+    {
+        "Id": 5,
+        "Email": null,
+        "Name": "Sude",
+        "Password": null,
+        "LastName": "Olmez",
+        "Token": null,
+        "Client": "Yapi Kredi",
+        "AuthorizedProducts": [
+            "103,104"
+        ],
+        "CreatedDate": "05/06/2024"
+    },
+    {
+        "Id": 6,
+        "Email": null,
+        "Name": "Hatice",
+        "Password": null,
+        "LastName": "Yurek",
+        "Token": null,
+        "Client": "Deniz",
+        "AuthorizedProducts": [
+            "102"
+        ],
+        "CreatedDate": "06/06/2024"
+    },
+    {
+        "Id": 7,
+        "Email": null,
+        "Name": "Bella",
+        "Password": null,
+        "LastName": "Brown",
+        "Token": null,
+        "Client": "Akbank",
+        "AuthorizedProducts": [
+            "104"
+        ],
+        "CreatedDate": "07/06/2024"
+    },
+    {
+        "Id": 8,
+        "Email": null,
+        "Name": "Cemil",
+        "Password": null,
+        "LastName": "Brown",
+        "Token": null,
+        "Client": "Akbank",
+        "AuthorizedProducts": [
+            "104"
+        ],
+        "CreatedDate": "07/06/2024"
+    }
+]

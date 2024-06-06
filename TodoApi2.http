@@ -1,15 +1,15 @@
 @TodoApi2_HostAddress = http://localhost:5273
 
-GET {{TodoApi2_HostAddress}}/weatherforecast/
+GET {{TodoApi2_HostAddress}}/UserList/
 Accept: application/json
 
-POST {{TodoApi2_HostAddress}}/login/
+POST {{TodoApi2_HostAddress}}/User/login/
 Content-Type: application/json
 
-POST {{TodoApi2_HostAddress}}/users/
+POST {{TodoApi2_HostAddress}}/UserList/users/
 Content-Type: application/json
 
-POST {{TodoApi2_HostAddress}}/delete/
+POST {{TodoApi2_HostAddress}}/UserList/delete/
 Content-Type: application/json
 
 ###

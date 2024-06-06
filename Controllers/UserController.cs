@@ -41,7 +41,10 @@ public class UserController : ControllerBase
                 user.Email,
                 user.Name,
                 user.LastName,
-                user.Token
+                user.Token,
+                user.Client,
+                user.AuthorizedProducts,
+                user.CreatedDate
             },
         });
 
