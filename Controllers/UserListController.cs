@@ -1,20 +1,16 @@
-using TodoApi2.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using MongoDB.Bson;
 namespace TodoApi2.Controllers;
 [Route("[controller]")]
 [ApiController]
 
 public class UserListController : ControllerBase
 {
-    private readonly MongoDbService _mongoDbService;
-
-    public UserListController(MongoDbService mongoDbService)
+    private readonly ILogger<UserListController> _logger;
+    public UserListController(ILogger<UserListController> logger)
     {
-        _mongoDbService = mongoDbService;
+        _logger = logger;
     }
-
     private IEnumerable<User> GetUsersFromJsonFile()
     {
         var filePath = Path.Combine("./././users.json");
@@ -22,15 +18,6 @@ public class UserListController : ControllerBase
         var jsonString = System.IO.File.ReadAllText(filePath);
         var users = JsonSerializer.Deserialize<List<User>>(jsonString);
         return users;
-    }
-
-    [HttpGet("get")]
-    public IActionResult GetAllUsers()
-    {
-        var users = _mongoDbService.GetAllUsers();
-        // var userList = JsonSerializer.Deserialize<List<User>>(users);
-        var u = users.ConvertAll(BsonTypeMapper.MapToDotNetValue);
-        return Ok(users);
     }
 
     [HttpPost("update")]
@@ -53,10 +40,10 @@ public class UserListController : ControllerBase
         return Ok();
     }
 
-    // [HttpGet(Name = "get")]
-    // public IEnumerable<User> Get()
-    // {
-    //     var users = GetUsersFromJsonFile();
-    //     return (IEnumerable<User>)users;
-    // }
+    [HttpGet(Name = "get")]
+    public IEnumerable<User> Get()
+    {
+        var users = GetUsersFromJsonFile();
+        return users;
+    }
 }
