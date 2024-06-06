@@ -19,14 +19,14 @@ public class UserListController : ControllerBase
         _mongoDbService = mongoDbService;
         _serializer = serializer;
     }
-    private IEnumerable<User> GetUsersFromJsonFile()
-    {
-        var filePath = Path.Combine("./././users.json");
+    // private IEnumerable<User> GetUsersFromJsonFile()
+    // {
+    //     var filePath = Path.Combine("./././users.json");
 
-        var jsonString = System.IO.File.ReadAllText(filePath);
-        var users = JsonSerializer.Deserialize<List<User>>(jsonString);
-        return users;
-    }
+    //     var jsonString = System.IO.File.ReadAllText(filePath);
+    //     var users = JsonSerializer.Deserialize<List<User>>(jsonString);
+    //     return users;
+    // }
 
     [HttpPost("update")]
     public IActionResult Update([FromBody] List<User> users)
@@ -42,20 +42,11 @@ public class UserListController : ControllerBase
     [HttpPost("delete")]
     public IActionResult Delete(User request)
     {
-        var users = GetUsersFromJsonFile();
-        var newUsers = users.Where(u => u.Id != request.Id).ToList();
-        Update(newUsers);
+        _mongoDbService.DelById(request.UId);
         return Ok();
     }
 
-    // [HttpGet(Name = "get")]
-    // public IEnumerable<User> Get()
-    // {
-    //     var users = GetUsersFromJsonFile();
-    //     return users;
-    // }
-
-    [HttpGet(Name = "get")]
+    [HttpGet("get")]
     public IEnumerable<User> Get()
     {
         var users = _mongoDbService.Get();
@@ -64,17 +55,15 @@ public class UserListController : ControllerBase
         foreach (var doc in users)
         {
             var user = BsonSerializer.Deserialize<User>(doc);
-            // user.Id = doc["_id"].AsObjectId.GetHashCode();
             userList.Add(user);
         }
         return userList;
     }
 
-    // [HttpGet(Name = "getById")]
-    // public ActionResult<User> GetById(User user)
-    // {
-    //     string id = user.Id.ToString();
-    //     User receivedUser = BsonSerializer.Deserialize<User>(_mongoDbService.GetById(id));
-    //     return receivedUser;
-    // }
+    [HttpGet("getById")]
+    public ActionResult<User> GetById(string UId)
+    {
+        User receivedUser = BsonSerializer.Deserialize<User>(_mongoDbService.GetById(UId));
+        return receivedUser;
+    }
 }

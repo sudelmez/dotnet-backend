@@ -8,6 +8,7 @@ public class User
     [BsonRepresentation(BsonType.ObjectId)]
     // public ObjectId _id { get; set; }
     public ObjectId Id { get; set; }
+    public string UId { get; set; }
     public string Email { get; set; }
     public string Name { get; set; }
     public string Password { get; set; }
