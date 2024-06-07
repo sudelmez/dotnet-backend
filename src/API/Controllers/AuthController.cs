@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson.Serialization;
-using System.Text.Json;
 using TodoApi2.Data;
 using TodoApi2.Features.Login;
 using TodoApi2.Features.User;
@@ -32,6 +31,7 @@ public class AuthController : ControllerBase
             userList.Add(u);
         }
         var user = userList.FirstOrDefault(u => u.Email == request.Email && u.Password == request.Password);
+        _logger.LogInformation("req: {request}", request.Email);
         _logger.LogInformation("Users read from JSON: {Users}", users);
         if (user == null)
         {
