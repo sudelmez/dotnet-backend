@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using System.Text.Json;
 using TodoApi2.Data;
-using TodoApi2.Serializers;
+using TodoApi2.Features.User;
 namespace TodoApi2.Controllers;
 [Route("[controller]")]
 [ApiController]
@@ -12,21 +11,11 @@ public class UserListController : ControllerBase
 {
     private readonly ILogger<UserListController> _logger;
     private MongoDbService _mongoDbService;
-    private BsonStringNumericSerializer _serializer;
-    public UserListController(ILogger<UserListController> logger, MongoDbService mongoDbService, BsonStringNumericSerializer serializer)
+    public UserListController(ILogger<UserListController> logger, MongoDbService mongoDbService)
     {
         _logger = logger;
         _mongoDbService = mongoDbService;
-        _serializer = serializer;
     }
-    // private IEnumerable<User> GetUsersFromJsonFile()
-    // {
-    //     var filePath = Path.Combine("./././users.json");
-
-    //     var jsonString = System.IO.File.ReadAllText(filePath);
-    //     var users = JsonSerializer.Deserialize<List<User>>(jsonString);
-    //     return users;
-    // }
 
     [HttpPost("update")]
     public IActionResult Update([FromBody] List<User> users)

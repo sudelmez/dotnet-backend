@@ -1,8 +1,6 @@
+namespace TodoApi2.Features.User;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-
-namespace TodoApi2;
-
 public class User
 {
     [BsonRepresentation(BsonType.ObjectId)]
@@ -19,8 +17,3 @@ public class User
     public string CreatedDate { get; set; }
 }
 
-public class LoginRequest
-{
-    public string Email { get; set; }
-    public string Password { get; set; }
-}

@@ -30,11 +30,12 @@ public class MongoDbService
         return _collection.Find(filter).FirstOrDefault();
     }
 
-    public BsonDocument DelById(string UId)
+    public BsonDocument? DelById(string UId)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("UId", UId);
         _collection.FindOneAndDelete(filter);
         return null;
     }
+
 }
 
