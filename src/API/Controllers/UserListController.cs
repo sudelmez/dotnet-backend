@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using System.Text.Json;
 using TodoApi2.Data;
@@ -32,6 +33,22 @@ public class UserListController : ControllerBase
     public IActionResult Delete(User request)
     {
         _mongoDbService.DelById(request.UId);
+        return Ok();
+    }
+
+    [HttpPost("add")]
+    public IActionResult Add(User request)
+    {
+        BsonDocument user = new BsonDocument{
+        { "UId", request.UId },
+        { "Name", request.Name },
+        { "LastName", request.LastName },
+        { "Email", request.Email },
+        { "Client", request.Client },
+        { "Password", request.Password } ,
+        { "CreatedDate", DateTime.Now.ToString() } ,
+    };
+        _mongoDbService.Add(user);
         return Ok();
     }
 

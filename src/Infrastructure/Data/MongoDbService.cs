@@ -1,6 +1,7 @@
 namespace TodoApi2.Data;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using TodoApi2.Features.User;
 
 public class MongoDbService
 {
@@ -22,6 +23,12 @@ public class MongoDbService
             Console.WriteLine(document);
         }
         return documents;
+    }
+
+    public BsonDocument? Add(BsonDocument document)
+    {
+        _collection.InsertOneAsync(document);
+        return null;
     }
 
     public BsonDocument GetById(string UId)
