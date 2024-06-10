@@ -1,6 +1,8 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using TodoApi2.Core.Contracts;
-using TodoApi2.Data;
+using TodoApi2.Features.Log;
 using TodoApi2.Features.Login;
 namespace TodoApi2.API.Controllers;
 [Route("[controller]")]
@@ -15,6 +17,45 @@ public class AuthController : ControllerBase
         _logger = logger;
         _mongoDbService = mongoDbService;
     }
+    public enum Status
+    {
+        Success,
+        Wrong,
+        NotFound
+    }
+
+    public string GetMessage(Status statu)
+    {
+        var Message = "";
+        if (statu == Status.Success) { Message = "Successful"; }
+        else if (statu == Status.Wrong) { Message = "Wrong mail or password"; }
+        else if (statu == Status.NotFound) { Message = "Invalid user"; }
+        return Message;
+    }
+
+    public async void SendLog(string userName, Status statu)
+    {
+        var logModel = new Log
+        {
+            UserName = userName,
+            CreatedDate = DateTime.Now,
+            Message = GetMessage(statu),
+            IpAdress = HttpContext?.Connection?.RemoteIpAddress?.MapToIPv4().ToString() ?? ""
+        };
+        try
+        {
+            BsonDocument logInfo = new BsonDocument{
+        { "UserName", logModel.UserName },
+        { "IpAdress",logModel.IpAdress },
+        { "DateTime", logModel.CreatedDate },
+        { "Log", logModel.Message }};
+            await _mongoDbService.Add(logInfo, true);
+            return;
+        }
+        catch (System.Exception)
+        { throw; }
+    }
+
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest request)
     {
@@ -23,8 +64,13 @@ public class AuthController : ControllerBase
         _logger.LogInformation("req: {request}", request.Email);
         if (user == null)
         {
-            _logger.LogWarning("Invalid login attempt for user: {Email}", request.Email);
-            return Unauthorized("Invalid email or password.");
+            SendLog(request.Email, Status.NotFound);
+        }
+        else if (user.Email == request.Email && user.Password != request.Password)
+        {
+            SendLog(request.Email, Status.Wrong);
+            _logger.LogWarning("Unmatched login attempt for user: {Email}", request.Email);
+            return Unauthorized("Unmatched email or password.");
         }
         _logger.LogInformation("User {Email} logged in successfully", user.Email);
         return Ok(new
@@ -38,7 +84,7 @@ public class AuthController : ControllerBase
                 user.Client,
                 user.AuthorizedProducts,
                 user.CreatedDate
-            },
+            }
         });
     }
 }
