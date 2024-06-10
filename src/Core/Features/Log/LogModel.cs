@@ -1,3 +1,5 @@
+namespace TodoApi2.Features.Log;
+
 public class Log
 {
     public string UserName { get; set; }

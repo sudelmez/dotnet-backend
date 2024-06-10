@@ -1,20 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
+using TodoApi2.Core.Contracts;
 using TodoApi2.Data;
 using TodoApi2.Features.Login;
-namespace TodoApi2.Controllers;
+namespace TodoApi2.API.Controllers;
 [Route("[controller]")]
 [ApiController]
 
 public class AuthController : ControllerBase
 {
     private readonly ILogger<AuthController> _logger;
-    private MongoDbService _mongoDbService;
-    public AuthController(ILogger<AuthController> logger, MongoDbService mongoDbService)
+    private IMongoDBService _mongoDbService;
+    public AuthController(ILogger<AuthController> logger, IMongoDBService mongoDbService)
     {
         _logger = logger;
         _mongoDbService = mongoDbService;
     }
-
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginRequest request)
     {
@@ -24,7 +24,6 @@ public class AuthController : ControllerBase
         if (user == null)
         {
             _logger.LogWarning("Invalid login attempt for user: {Email}", request.Email);
-
             return Unauthorized("Invalid email or password.");
         }
         _logger.LogInformation("User {Email} logged in successfully", user.Email);
@@ -41,6 +40,5 @@ public class AuthController : ControllerBase
                 user.CreatedDate
             },
         });
-
     }
 }

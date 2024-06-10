@@ -9,6 +9,9 @@ Accept: application/json
 POST {{TodoApi2_HostAddress}}/User/login/
 Content-Type: application/json
 
+POST {{TodoApi2_HostAddress}}/User/log
+Content-Type: application/json
+
 POST {{TodoApi2_HostAddress}}/UserList/users/
 Content-Type: application/json
 

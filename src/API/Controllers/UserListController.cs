@@ -2,17 +2,18 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using System.Text.Json;
+using TodoApi2.Core.Contracts;
 using TodoApi2.Data;
 using TodoApi2.Features.User;
-namespace TodoApi2.Controllers;
+namespace TodoApi2.API.Controllers;
 [Route("[controller]")]
 [ApiController]
 
 public class UserListController : ControllerBase
 {
     private readonly ILogger<UserListController> _logger;
-    private MongoDbService _mongoDbService;
-    public UserListController(ILogger<UserListController> logger, MongoDbService mongoDbService)
+    private IMongoDBService _mongoDbService;
+    public UserListController(ILogger<UserListController> logger, IMongoDBService mongoDbService)
     {
         _logger = logger;
         _mongoDbService = mongoDbService;
