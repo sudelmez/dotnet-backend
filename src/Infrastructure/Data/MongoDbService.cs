@@ -1,18 +1,24 @@
 namespace TodoApi2.Data;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using TodoApi2.Controllers;
 using TodoApi2.Features.User;
 
 public class MongoDbService
 {
     private readonly IMongoCollection<BsonDocument> _collection;
-
-    public MongoDbService()
+    private readonly IMongoCollection<BsonDocument> _collectionLog;
+    private LogController _logController;
+    // private LogService _logService;
+    public MongoDbService(LogController logController)
     {
+        _logController = logController;
         var connectionString = "mongodb://localhost:27017";
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase("portal");
         _collection = database.GetCollection<BsonDocument>("users");
+        _collectionLog = database.GetCollection<BsonDocument>("authorization");
     }
 
     public List<BsonDocument> Get()
@@ -25,9 +31,13 @@ public class MongoDbService
         return documents;
     }
 
-    public BsonDocument? Add(BsonDocument document)
+    public BsonDocument? Add(BsonDocument document, bool isLog)
     {
-        _collection.InsertOneAsync(document);
+        if (isLog)
+        {
+            _collectionLog.InsertOneAsync(document);
+        }
+        else { _collection.InsertOneAsync(document); }
         return null;
     }
 
@@ -42,6 +52,26 @@ public class MongoDbService
         var filter = Builders<BsonDocument>.Filter.Eq("UId", UId);
         _collection.FindOneAndDelete(filter);
         return null;
+    }
+
+    public User? Auth(string email, string password)
+    {
+        var filter = Builders<BsonDocument>.Filter.Eq("Email", email);
+        var user = BsonSerializer.Deserialize<User>(_collection.Find(filter).FirstOrDefault());
+        if (user == null)
+        {
+            _logController.SendLog(LogController.Status.NotFound, null);
+        }
+        else if (user.Password != password)
+        {
+
+            _logController.SendLog(LogController.Status.Wrong, email);
+        }
+        else if (user.Password == password)
+        {
+            _logController.SendLog(LogController.Status.Success, email);
+        }
+        return user.Password == password ? user : null;
     }
 
 }

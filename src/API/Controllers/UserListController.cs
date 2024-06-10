@@ -48,7 +48,7 @@ public class UserListController : ControllerBase
         { "Password", request.Password } ,
         { "CreatedDate", DateTime.Now.ToString() } ,
     };
-        _mongoDbService.Add(user);
+        _mongoDbService.Add(user, false);
         return Ok();
     }
 

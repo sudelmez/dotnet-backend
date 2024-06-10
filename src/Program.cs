@@ -1,3 +1,4 @@
+using TodoApi2.Controllers;
 using TodoApi2.Data;
 
 var builder = WebApplication.CreateBuilder(args);
