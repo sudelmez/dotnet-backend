@@ -11,6 +11,7 @@ public class AuthController : ControllerBase
 {
     private readonly ILogger<AuthController> _logger;
     private IMongoDBService _mongoDbService;
+    Log _log = new Log();
     public AuthController(ILogger<AuthController> logger, IMongoDBService mongoDbService)
     {
         _logger = logger;
@@ -42,12 +43,7 @@ public class AuthController : ControllerBase
         };
         try
         {
-            BsonDocument logInfo = new BsonDocument{
-        { "UserName", logModel.UserName },
-        { "IpAdress",logModel.IpAdress },
-        { "DateTime", logModel.CreatedDate },
-        { "Log", logModel.Message },
-        {"UserAgent", logModel.UserAgent}};
+            BsonDocument logInfo = _log.ToBson(logModel);
             await _mongoDbService.Add(logInfo, true);
             return;
         }

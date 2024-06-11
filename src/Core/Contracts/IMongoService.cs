@@ -1,4 +1,3 @@
-using System.Net;
 using MongoDB.Bson;
 using TodoApi2.Features.User;
 namespace TodoApi2.Core.Contracts;

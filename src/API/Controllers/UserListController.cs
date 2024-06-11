@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using System.Text.Json;
 using TodoApi2.Core.Contracts;
-using TodoApi2.Data;
 using TodoApi2.Features.User;
 namespace TodoApi2.API.Controllers;
 [Route("[controller]")]
@@ -13,6 +11,7 @@ public class UserListController : ControllerBase
 {
     private readonly ILogger<UserListController> _logger;
     private IMongoDBService _mongoDbService;
+    User _user = new User();
     public UserListController(ILogger<UserListController> logger, IMongoDBService mongoDbService)
     {
         _logger = logger;
@@ -40,15 +39,7 @@ public class UserListController : ControllerBase
     [HttpPost("add")]
     public IActionResult Add(User request)
     {
-        BsonDocument user = new BsonDocument{
-        { "UId", request.UId },
-        { "Name", request.Name },
-        { "LastName", request.LastName },
-        { "Email", request.Email },
-        { "Client", request.Client },
-        { "Password", request.Password } ,
-        { "CreatedDate", DateTime.Now } ,
-    };
+        var user = _user.ToBson(request);
         _mongoDbService.Add(user, false);
         return Ok();
     }
@@ -61,7 +52,7 @@ public class UserListController : ControllerBase
         var userList = new List<User>();
         foreach (var doc in users)
         {
-            var user = BsonSerializer.Deserialize<User>(doc);
+            var user = _user.FromBson(doc);
             userList.Add(user);
         }
         return userList;
@@ -70,7 +61,7 @@ public class UserListController : ControllerBase
     [HttpGet("getById")]
     public ActionResult<User> GetById(string UId)
     {
-        User receivedUser = BsonSerializer.Deserialize<User>(_mongoDbService.GetById(UId));
+        User receivedUser = _user.FromBson(_mongoDbService.GetById(UId));
         return receivedUser;
     }
 }
