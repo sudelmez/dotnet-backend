@@ -69,19 +69,24 @@ public class AuthController : ControllerBase
             _logger.LogWarning("Unmatched login attempt for user: {Email}", request.Email);
             return Unauthorized("Unmatched email or password.");
         }
-        _logger.LogInformation("User {Email} logged in successfully", user.Email);
-        return Ok(new
+        else if (user.Email == request.Email && user.Password == request.Password)
         {
-            user = new
+            _logger.LogInformation("User {Email} logged in successfully", user.Email);
+            SendLog(request.Email, Status.Success);
+            return Ok(new
             {
-                user.Email,
-                user.Name,
-                user.LastName,
-                user.Token,
-                user.Client,
-                user.AuthorizedProducts,
-                user.CreatedDate
-            }
-        });
+                user = new
+                {
+                    user.Email,
+                    user.Name,
+                    user.LastName,
+                    user.Token,
+                    user.Client,
+                    user.AuthorizedProducts,
+                    user.CreatedDate
+                }
+            });
+        }
+        return null;
     }
 }

@@ -62,7 +62,7 @@ public class MongoDbService : IMongoDBService
             return null;
         }
         var user = BsonSerializer.Deserialize<User>(_collection.Find(filter).FirstOrDefault());
-        return user.Password == password ? user : null;
+        return user;
     }
 }
 
