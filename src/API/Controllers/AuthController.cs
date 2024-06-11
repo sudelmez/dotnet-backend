@@ -37,7 +37,8 @@ public class AuthController : ControllerBase
             UserName = userName,
             CreatedDate = DateTime.Now,
             Message = GetMessage(statu),
-            IpAdress = HttpContext?.Connection?.RemoteIpAddress?.MapToIPv4().ToString() ?? ""
+            IpAdress = HttpContext?.Connection?.RemoteIpAddress?.MapToIPv4().ToString() ?? "",
+            UserAgent = HttpContext.Request.Headers.UserAgent
         };
         try
         {
@@ -45,7 +46,8 @@ public class AuthController : ControllerBase
         { "UserName", logModel.UserName },
         { "IpAdress",logModel.IpAdress },
         { "DateTime", logModel.CreatedDate },
-        { "Log", logModel.Message }};
+        { "Log", logModel.Message },
+        {"UserAgent", logModel.UserAgent}};
             await _mongoDbService.Add(logInfo, true);
             return;
         }

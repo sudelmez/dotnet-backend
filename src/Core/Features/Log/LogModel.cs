@@ -6,4 +6,5 @@ public class Log
     public DateTime CreatedDate { get; set; }
     public string Message { get; set; }
     public string IpAdress { get; set; }
+    public string UserAgent { get; set; }
 }
