@@ -9,12 +9,10 @@ using TodoApi2.Features.User;
 
 public class MongoDbService : IMongoDBService
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IMongoCollection<BsonDocument> _collection;
     private readonly IMongoCollection<BsonDocument> _collectionLog;
-    public MongoDbService(IHttpContextAccessor httpContextAccessor)
+    public MongoDbService()
     {
-        _httpContextAccessor = httpContextAccessor;
         var connectionString = "mongodb://localhost:27017";
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase("portal");

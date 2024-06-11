@@ -1,4 +1,3 @@
-using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using TodoApi2.Core.Contracts;
@@ -23,8 +22,7 @@ public class AuthController : ControllerBase
         Wrong,
         NotFound
     }
-
-    public string GetMessage(Status statu)
+    private string GetMessage(Status statu)
     {
         var Message = "";
         if (statu == Status.Success) { Message = "Successful"; }
@@ -32,8 +30,7 @@ public class AuthController : ControllerBase
         else if (statu == Status.NotFound) { Message = "Invalid user"; }
         return Message;
     }
-
-    public async void SendLog(string userName, Status statu)
+    private async void SendLog(string userName, Status statu)
     {
         var logModel = new Log
         {

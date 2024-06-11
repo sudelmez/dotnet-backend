@@ -1,11 +1,11 @@
 [
     {
         "Id": 1,
-        "Email": null,
+        "Email": "john@gmail.com",
         "Name": "John",
-        "Password": null,
+        "Password": "qwerty",
         "LastName": "Doe",
-        "Token": null,
+        "Token": "12345",
         "Client": "Hepiyi",
         "AuthorizedProducts": [
             "101,104"
@@ -14,11 +14,11 @@
     },
     {
         "Id": 2,
-        "Email": null,
+        "Email": "mary@gmail.com",
         "Name": "Mary",
-        "Password": null,
+        "Password": "qwerty",
         "LastName": "Jane",
-        "Token": null,
+        "Token": "23245",
         "Client": "Aksigorta",
         "AuthorizedProducts": [
             "101,104"
@@ -26,38 +26,64 @@
         "CreatedDate": "02/06/2024"
     },
     {
-        "Id": 5,
-        "Email": null,
-        "Name": "Sude",
-        "Password": null,
+        "Id": 3,
+        "Email": "hakan@gmail.com",
+        "Name": "Hakan",
+        "Password": "qwerty",
         "LastName": "Olmez",
-        "Token": null,
-        "Client": "Yapi Kredi",
+        "Token": "53592",
+        "Client": "Hepiyi",
         "AuthorizedProducts": [
             "103,104"
         ],
         "CreatedDate": "05/06/2024"
     },
     {
+        "Id": 5,
+        "Email": "merve@gmail.com",
+        "Name": "Merve",
+        "Password": "qwerty",
+        "LastName": "Olmez",
+        "Token": "69584",
+        "Client": "Casper",
+        "AuthorizedProducts": [
+            "102,104"
+        ],
+        "CreatedDate": "05/06/2024"
+    },
+    {
         "Id": 6,
-        "Email": null,
+        "Email": "jackson@gmail.com",
+        "Name": "Jackson",
+        "Password": "qwerty",
+        "LastName": "Michel",
+        "Token": "98535",
+        "Client": "Aksigorta",
+        "AuthorizedProducts": [
+            "101"
+        ],
+        "CreatedDate": "05/06/2024"
+    },
+    {
+        "Id": 7,
+        "Email": "hatice@gmail.com",
         "Name": "Hatice",
-        "Password": null,
+        "Password": "qwerty",
         "LastName": "Yurek",
-        "Token": null,
+        "Token": "95356",
         "Client": "Deniz",
         "AuthorizedProducts": [
-            "102"
+            "102,101"
         ],
         "CreatedDate": "06/06/2024"
     },
     {
-        "Id": 7,
-        "Email": null,
+        "Id": 8,
+        "Email": "bella@gmail.com",
         "Name": "Bella",
-        "Password": null,
+        "Password": "qwerty",
         "LastName": "Brown",
-        "Token": null,
+        "Token": "85745",
         "Client": "Akbank",
         "AuthorizedProducts": [
             "104"
@@ -65,12 +91,12 @@
         "CreatedDate": "07/06/2024"
     },
     {
-        "Id": 8,
-        "Email": null,
+        "Id": 9,
+        "Email": "cemil@gmail.com",
         "Name": "Cemil",
-        "Password": null,
+        "Password": "qwerty",
         "LastName": "Brown",
-        "Token": null,
+        "Token": "58664",
         "Client": "Akbank",
         "AuthorizedProducts": [
             "104"

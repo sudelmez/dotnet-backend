@@ -14,6 +14,6 @@ public class User
     public string Token { get; set; }
     public string Client { get; set; }
     public List<string> AuthorizedProducts { get; set; }
-    public string CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; }
 }
 

@@ -47,7 +47,7 @@ public class UserListController : ControllerBase
         { "Email", request.Email },
         { "Client", request.Client },
         { "Password", request.Password } ,
-        { "CreatedDate", DateTime.Now.ToString() } ,
+        { "CreatedDate", DateTime.Now } ,
     };
         _mongoDbService.Add(user, false);
         return Ok();

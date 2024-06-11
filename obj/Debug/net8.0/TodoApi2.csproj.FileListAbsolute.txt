@@ -33,7 +33,6 @@
 /Users/sudeolmez/Desktop/TodoApi2/obj/Debug/net8.0/TodoApi2.pdb
 /Users/sudeolmez/Desktop/TodoApi2/obj/Debug/net8.0/TodoApi2.genruntimeconfig.cache
 /Users/sudeolmez/Desktop/TodoApi2/obj/Debug/net8.0/ref/TodoApi2.dll
-/Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/users.json
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/loginuser.json
 /Users/sudeolmez/Desktop/TodoApi2/obj/Debug/net8.0/TodoApi2.sourcelink.json
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/defaultUsers.json
