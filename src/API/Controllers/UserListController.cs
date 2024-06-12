@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson.Serialization;
 using System.Text.Json;
 using TodoApi2.Core.Contracts;
 using TodoApi2.Features.User;
@@ -24,9 +23,7 @@ public class UserListController : ControllerBase
         var filePath = Path.Combine("././users.json");
         string newList = JsonSerializer.Serialize(users);
         System.IO.File.WriteAllText(filePath, newList);
-
         return Ok();
-
     }
 
     [HttpPost("delete")]

@@ -8,7 +8,7 @@
         "Token": "12345",
         "Client": "Hepiyi",
         "AuthorizedProducts": [
-            "101,104"
+            "1"
         ],
         "CreatedDate": "02/06/2024"
     },
@@ -21,7 +21,7 @@
         "Token": "23245",
         "Client": "Aksigorta",
         "AuthorizedProducts": [
-            "101,104"
+            "2"
         ],
         "CreatedDate": "02/06/2024"
     },
@@ -34,7 +34,7 @@
         "Token": "53592",
         "Client": "Hepiyi",
         "AuthorizedProducts": [
-            "103,104"
+            "2"
         ],
         "CreatedDate": "05/06/2024"
     },
@@ -47,7 +47,7 @@
         "Token": "69584",
         "Client": "Casper",
         "AuthorizedProducts": [
-            "102,104"
+            "2"
         ],
         "CreatedDate": "05/06/2024"
     },
@@ -60,7 +60,7 @@
         "Token": "98535",
         "Client": "Aksigorta",
         "AuthorizedProducts": [
-            "101"
+            "2"
         ],
         "CreatedDate": "05/06/2024"
     },
@@ -73,7 +73,7 @@
         "Token": "95356",
         "Client": "Deniz",
         "AuthorizedProducts": [
-            "102,101"
+            "2"
         ],
         "CreatedDate": "06/06/2024"
     },
@@ -86,7 +86,7 @@
         "Token": "85745",
         "Client": "Akbank",
         "AuthorizedProducts": [
-            "104"
+            "1"
         ],
         "CreatedDate": "07/06/2024"
     },
@@ -99,7 +99,7 @@
         "Token": "58664",
         "Client": "Akbank",
         "AuthorizedProducts": [
-            "104"
+            "1"
         ],
         "CreatedDate": "07/06/2024"
     }
