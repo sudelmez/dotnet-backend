@@ -67,7 +67,7 @@ public class MongoDbService : IMongoDBService
         return null;
     }
 
-    public User? Auth(string email, string password)
+    public AdminModel? Auth(string email, string password)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("Email", email);
         var resUser = _collection.Find(filter).FirstOrDefault();
@@ -75,7 +75,7 @@ public class MongoDbService : IMongoDBService
         {
             return null;
         }
-        var user = BsonSerializer.Deserialize<User>(_collection.Find(filter).FirstOrDefault());
+        var user = BsonSerializer.Deserialize<AdminModel>(_collection.Find(filter).FirstOrDefault());
         return user;
     }
 }

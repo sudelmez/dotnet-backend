@@ -8,7 +8,7 @@ public interface IMongoDBService
     BsonDocument? DelById(string UId);
     BsonDocument GetById(string UId);
     List<BsonDocument> Get();
-    User? Auth(string email, string password);
+    AdminModel? Auth(string email, string password);
     BsonDocument GetRole(string RoleId);
     BsonDocument GetAccessibility(string RoleId);
 }

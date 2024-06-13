@@ -1,106 +1,90 @@
 [
     {
-        "Id": 1,
-        "Email": "john@gmail.com",
+        "UId": "1",
         "Name": "John",
-        "Password": "qwerty",
         "LastName": "Doe",
         "Token": "12345",
         "Client": "Hepiyi",
         "AuthorizedProducts": [
-            "1"
+            "101"
         ],
-        "CreatedDate": "02/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 2,
-        "Email": "mary@gmail.com",
+        "UId": "2",
         "Name": "Mary",
-        "Password": "qwerty",
         "LastName": "Jane",
         "Token": "23245",
         "Client": "Aksigorta",
         "AuthorizedProducts": [
-            "2"
+            "102,103"
         ],
-        "CreatedDate": "02/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 3,
-        "Email": "hakan@gmail.com",
+        "UId": "3",
         "Name": "Hakan",
-        "Password": "qwerty",
         "LastName": "Olmez",
         "Token": "53592",
         "Client": "Hepiyi",
         "AuthorizedProducts": [
-            "2"
+            "102"
         ],
-        "CreatedDate": "05/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 5,
-        "Email": "merve@gmail.com",
+        "UId": "5",
         "Name": "Merve",
-        "Password": "qwerty",
         "LastName": "Olmez",
         "Token": "69584",
         "Client": "Casper",
         "AuthorizedProducts": [
-            "2"
+            "101,102"
         ],
-        "CreatedDate": "05/06/2024"
+        "CreatedDate":"2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 6,
-        "Email": "jackson@gmail.com",
+        "UId": "6",
         "Name": "Jackson",
-        "Password": "qwerty",
         "LastName": "Michel",
         "Token": "98535",
         "Client": "Aksigorta",
         "AuthorizedProducts": [
-            "2"
+            "103"
         ],
-        "CreatedDate": "05/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 7,
-        "Email": "hatice@gmail.com",
+        "UId": "7",
         "Name": "Hatice",
-        "Password": "qwerty",
         "LastName": "Yurek",
         "Token": "95356",
         "Client": "Deniz",
         "AuthorizedProducts": [
-            "2"
+            "101,102,103"
         ],
-        "CreatedDate": "06/06/2024"
+        "CreatedDate":"2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 8,
-        "Email": "bella@gmail.com",
+        "UId": "8",
         "Name": "Bella",
-        "Password": "qwerty",
         "LastName": "Brown",
         "Token": "85745",
         "Client": "Akbank",
         "AuthorizedProducts": [
-            "1"
+            "103"
         ],
-        "CreatedDate": "07/06/2024"
+        "CreatedDate":"2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 9,
-        "Email": "cemil@gmail.com",
+        "UId": "9",
         "Name": "Cemil",
-        "Password": "qwerty",
         "LastName": "Brown",
         "Token": "58664",
         "Client": "Akbank",
         "AuthorizedProducts": [
-            "1"
+            "102"
         ],
-        "CreatedDate": "07/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     }
 ]

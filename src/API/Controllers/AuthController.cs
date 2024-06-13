@@ -78,10 +78,6 @@ public class AuthController : ControllerBase
                     user.Email,
                     user.Name,
                     user.LastName,
-                    user.Token,
-                    user.Client,
-                    user.AuthorizedProducts,
-                    user.CreatedDate
                 }
             });
         }
