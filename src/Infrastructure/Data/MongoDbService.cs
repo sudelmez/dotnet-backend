@@ -12,12 +12,14 @@ public class MongoDbService : IMongoDBService
     private readonly IMongoCollection<BsonDocument> _collectionLog;
     private readonly IMongoCollection<BsonDocument> _collectionRoles;
     private readonly IMongoCollection<BsonDocument> _collectionAcc;
+    private readonly IMongoCollection<BsonDocument> _collectionAdmins;
     public MongoDbService()
     {
         var connectionString = "mongodb://localhost:27017";
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase("portal");
         _collection = database.GetCollection<BsonDocument>("users");
+        _collectionAdmins = database.GetCollection<BsonDocument>("admins");
         _collectionLog = database.GetCollection<BsonDocument>("authorization");
         _collectionRoles = database.GetCollection<BsonDocument>("roles");
         _collectionAcc = database.GetCollection<BsonDocument>("accessibility");
@@ -70,12 +72,12 @@ public class MongoDbService : IMongoDBService
     public AdminModel? Auth(string email, string password)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("Email", email);
-        var resUser = _collection.Find(filter).FirstOrDefault();
+        var resUser = _collectionAdmins.Find(filter).FirstOrDefault();
         if (resUser == null)
         {
             return null;
         }
-        var user = BsonSerializer.Deserialize<AdminModel>(_collection.Find(filter).FirstOrDefault());
+        var user = BsonSerializer.Deserialize<AdminModel>(resUser);
         return user;
     }
 }

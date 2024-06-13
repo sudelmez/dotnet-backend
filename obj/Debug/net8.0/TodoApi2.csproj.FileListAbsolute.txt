@@ -49,3 +49,4 @@
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/runtimes/linux/native/libmongocrypt.so
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/runtimes/osx/native/libmongocrypt.dylib
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/runtimes/win/native/mongocrypt.dll
+/Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/defaultroles.json

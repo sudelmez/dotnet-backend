@@ -1,15 +1,16 @@
-[
-    {
-        "Id": 1,
-        "Email": "john@gmail.com",
-        "Name": "John",
-        "Password": "qwerty",
-        "LastName": "Doe",
-        "Token": "1",
-        "Client": "Hepiyi",
-        "AuthorizedProducts": [
-            "101,102"
-        ],
-        "CreatedDate": "01/06/2024"
-    }
+[{
+    "UId": "f350771b-eb16-4288-a3a5-e434fed7dbf9",
+    "Email": "john@gmail.com",
+    "Name": "John",
+    "Password": "qwerty",
+    "LastName": "Doe",
+    "RoleId":"1"
+},{
+    "UId": "m359871b-er16-4288-a3a2-e434fed7dbf9",
+    "Email": "mary@gmail.com",
+    "Name": "Mary",
+    "Password": "qwerty",
+    "LastName": "Jane",
+    "RoleId":"1"
+}
 ]
