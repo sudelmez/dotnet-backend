@@ -1,5 +1,7 @@
 namespace TodoApi2.Data;
 using System;
+using System.Net;
+using Microsoft.AspNetCore.Http.HttpResults;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
@@ -66,6 +68,14 @@ public class MongoDbService : IMongoDBService
     {
         var filter = Builders<BsonDocument>.Filter.Eq("UId", UId);
         _collection.FindOneAndDelete(filter);
+        return null;
+    }
+
+    public async Task<BsonDocument>? Update(BsonDocument document, string uId)
+    {
+        var filter = Builders<BsonDocument>.Filter.Eq("UId", uId);
+        var updateDefinition = new BsonDocument { { "$set", document } };
+        await _collection.UpdateOneAsync(filter, updateDefinition);
         return null;
     }
 

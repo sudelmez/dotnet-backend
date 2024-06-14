@@ -11,4 +11,5 @@ public interface IMongoDBService
     AdminModel? Auth(string email, string password);
     BsonDocument GetRole(string RoleId);
     BsonDocument GetAccessibility(string RoleId);
+    Task<BsonDocument>? Update(BsonDocument document, string uId);
 }

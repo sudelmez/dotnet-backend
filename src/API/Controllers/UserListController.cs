@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 using TodoApi2.Core.Contracts;
 using TodoApi2.Features.User;
 namespace TodoApi2.API.Controllers;
@@ -18,11 +17,10 @@ public class UserListController : ControllerBase
     }
 
     [HttpPost("update")]
-    public IActionResult Update([FromBody] List<User> users)
+    public IActionResult Update(User user)
     {
-        var filePath = Path.Combine("././users.json");
-        string newList = JsonSerializer.Serialize(users);
-        System.IO.File.WriteAllText(filePath, newList);
+        var userB = _user.ToBson(user);
+        _mongoDbService.Update(userB, user.UId);
         return Ok();
     }
 
