@@ -50,6 +50,8 @@ public class UserListController : ControllerBase
             var user = _user.FromBson(doc);
             userList.Add(user);
         }
+        userList.Sort((x, y) => DateTime.Compare(x.CreatedDate, y.CreatedDate));
+        userList.Reverse();
         return userList;
     }
 
