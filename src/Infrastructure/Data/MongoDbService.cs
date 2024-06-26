@@ -1,7 +1,5 @@
 namespace TodoApi2.Data;
 using System;
-using System.Net;
-using Microsoft.AspNetCore.Http.HttpResults;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;

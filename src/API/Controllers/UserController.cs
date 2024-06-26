@@ -7,6 +7,7 @@ namespace TodoApi2.API.Controllers;
 
 public class UserListController : ControllerBase
 {
+    //IUserService ile bağla
     private readonly ILogger<UserListController> _logger;
     private IMongoDBService _mongoDbService;
     User _user = new User();
