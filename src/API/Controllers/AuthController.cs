@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
-using TodoApi2.Core.Contracts;
+using TodoApi2.src.Core.Contracts;
 using TodoApi2.Features.Log;
 using TodoApi2.Features.Login;
-namespace TodoApi2.API.Controllers;
+namespace TodoApi2.src.API.Controllers;
 [Route("[controller]")]
 [ApiController]
 
@@ -11,10 +11,12 @@ public class AuthController : ControllerBase
 {
     private readonly ILogger<AuthController> _logger;
     private IMongoDBService _mongoDbService;
+    private IAuthService _authService;
     Log _log = new Log();
-    public AuthController(ILogger<AuthController> logger, IMongoDBService mongoDbService)
+    public AuthController(ILogger<AuthController> logger, IMongoDBService mongoDbService, IAuthService authService)
     {
         _logger = logger;
+        _authService = authService;
         _mongoDbService = mongoDbService;
     }
     public enum Status
@@ -52,11 +54,12 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginRequest request)
+    public async Task<IActionResult?> Login(LoginRequest request)
     {
         _logger.LogInformation("Received login request: Email = {Email}, Password = {Password}", request.Email, request.Password);
-        var user = _mongoDbService.Auth(request.Email, request.Password);
+        var user = await _authService.Auth(request);
         _logger.LogInformation("req: {request}", request.Email);
+
         if (user == null)
         {
             SendLog(request.Email, Status.NotFound);

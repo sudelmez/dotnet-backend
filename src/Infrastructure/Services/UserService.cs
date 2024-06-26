@@ -1,5 +1,5 @@
 using MongoDB.Bson;
-using TodoApi2.Core.Contracts;
+using TodoApi2.src.Core.Contracts;
 
 namespace TodoApi2.src.Infrastructure.Services
 {

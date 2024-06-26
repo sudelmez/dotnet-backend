@@ -1,6 +1,5 @@
 using MongoDB.Bson;
-
-namespace TodoApi2.Core.Contracts;
+namespace TodoApi2.src.Core.Contracts;
 
 public interface IUserService
 {
@@ -9,5 +8,4 @@ public interface IUserService
     Task<BsonDocument> Delete(string uId);
     Task<BsonDocument> Update(BsonDocument doc, string uId);
     Task<BsonDocument> GetUser(string uId);
-
 }

@@ -1,6 +1,5 @@
 using MongoDB.Bson;
-using TodoApi2.Features.User;
-namespace TodoApi2.Core.Contracts;
+namespace TodoApi2.src.Core.Contracts;
 
 public interface IMongoDBService
 {
@@ -8,7 +7,7 @@ public interface IMongoDBService
     Task<BsonDocument>? DelById(string UId);
     Task<BsonDocument>? GetById(string UId);
     Task<List<BsonDocument>> Get();
-    Task<AdminModel>? Auth(string email, string password);
+    Task<BsonDocument>? Auth(string email, string password);
     Task<BsonDocument>? GetRole(string RoleId);
     Task<BsonDocument>? GetAccessibility(string RoleId);
     Task<BsonDocument>? Update(BsonDocument document, string uId);

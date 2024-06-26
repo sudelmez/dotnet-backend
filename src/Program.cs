@@ -1,5 +1,6 @@
-using TodoApi2.Core.Contracts;
 using TodoApi2.Data;
+using TodoApi2.src.Core.Contracts;
+using TodoApi2.src.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IMongoDBService, MongoDbService>();
+builder.Services.AddTransient<IAccessibilityService, AccessibilityService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using TodoApi2.Core.Contracts;
+using TodoApi2.src.Core.Contracts;
 using TodoApi2.Features.User;
-namespace TodoApi2.API.Controllers;
+namespace TodoApi2.src.API.Controllers;
 [Route("[controller]")]
 [ApiController]
 
@@ -9,13 +9,13 @@ public class UserListController : ControllerBase
 {
     private readonly ILogger<UserListController> _logger;
     private IUserService _userService;
-    User _user = new User();
+
     public UserListController(ILogger<UserListController> logger, IUserService userService)
     {
         _logger = logger;
         _userService = userService;
     }
-
+    User _user = new User();
     [HttpPost("update")]
     public async Task<IActionResult> Update(User user)
     {
@@ -27,8 +27,12 @@ public class UserListController : ControllerBase
     [HttpPost("delete")]
     public async Task<IActionResult> Delete(User request)
     {
-        await _userService.Delete(request.UId);
-        return Ok();
+        var res = await _userService.Delete(request.UId);
+        if (res != null)
+        {
+            return Ok(res);
+        }
+        else { return NotFound(); }
     }
 
     [HttpPost("add")]
@@ -58,7 +62,8 @@ public class UserListController : ControllerBase
     [HttpGet("getById")]
     public async Task<ActionResult<User>> GetById(string UId)
     {
-        User receivedUser = await _user.FromBson(_userService.GetUser(UId));
+        var user = _userService.GetUser(UId);
+        User receivedUser = await _user.FromBson(user);
         return receivedUser;
     }
 }

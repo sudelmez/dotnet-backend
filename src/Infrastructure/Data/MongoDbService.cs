@@ -1,10 +1,8 @@
-namespace TodoApi2.Data;
+namespace TodoApi2.src.Infrastructure.Data;
 using System;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using TodoApi2.Core.Contracts;
-using TodoApi2.Features.User;
+using TodoApi2.src.Core.Contracts;
 
 public class MongoDbService : IMongoDBService
 {
@@ -59,14 +57,15 @@ public class MongoDbService : IMongoDBService
     public async Task<BsonDocument>? GetById(string UId)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("UId", UId);
-        return await _collection.Find(filter).FirstOrDefaultAsync();
+        var user = await _collection.Find(filter).FirstOrDefaultAsync();
+        return user;
     }
 
-    public Task<BsonDocument>? DelById(string UId)
+    public async Task<BsonDocument?> DelById(string UId)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("UId", UId);
-        _collection.FindOneAndDelete(filter);
-        return null;
+        var result = await _collection.FindOneAndDeleteAsync(filter);
+        return result;
     }
 
     public async Task<BsonDocument>? Update(BsonDocument document, string uId)
@@ -77,7 +76,7 @@ public class MongoDbService : IMongoDBService
         return document;
     }
 
-    public async Task<AdminModel>? Auth(string email, string password)
+    public async Task<BsonDocument>? Auth(string email, string password)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("Email", email);
         var resUser = await _collectionAdmins.Find(filter).FirstOrDefaultAsync();
@@ -85,8 +84,7 @@ public class MongoDbService : IMongoDBService
         {
             return null;
         }
-        var user = BsonSerializer.Deserialize<AdminModel>(resUser);
-        return user;
+        return resUser;
     }
 }
 
