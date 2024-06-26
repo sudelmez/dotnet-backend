@@ -5,11 +5,11 @@ namespace TodoApi2.Core.Contracts;
 public interface IMongoDBService
 {
     Task<BsonDocument>? Add(BsonDocument document, bool isLog);
-    BsonDocument? DelById(string UId);
-    BsonDocument GetById(string UId);
-    List<BsonDocument> Get();
-    AdminModel? Auth(string email, string password);
-    BsonDocument GetRole(string RoleId);
-    BsonDocument GetAccessibility(string RoleId);
+    Task<BsonDocument>? DelById(string UId);
+    Task<BsonDocument>? GetById(string UId);
+    Task<List<BsonDocument>> Get();
+    Task<AdminModel>? Auth(string email, string password);
+    Task<BsonDocument>? GetRole(string RoleId);
+    Task<BsonDocument>? GetAccessibility(string RoleId);
     Task<BsonDocument>? Update(BsonDocument document, string uId);
 }

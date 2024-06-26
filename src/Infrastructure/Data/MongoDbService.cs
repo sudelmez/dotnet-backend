@@ -24,26 +24,26 @@ public class MongoDbService : IMongoDBService
         _collectionRoles = database.GetCollection<BsonDocument>("roles");
         _collectionAcc = database.GetCollection<BsonDocument>("accessibility");
     }
-    public List<BsonDocument> Get()
+    public async Task<List<BsonDocument>> Get()
     {
-        List<BsonDocument> documents = _collection.Find(new BsonDocument()).ToList();
+        List<BsonDocument> documents = await _collection.Find(new BsonDocument()).ToListAsync();
         foreach (var document in documents)
         {
             Console.WriteLine(document);
         }
         return documents;
     }
-    public BsonDocument GetRole(string RoleId)
+    public async Task<BsonDocument>? GetRole(string RoleId)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("RoleId", RoleId);
-        var recRoles = _collectionRoles.Find(filter).FirstOrDefault();
+        var recRoles = await _collectionRoles.Find(filter).FirstOrDefaultAsync();
         return recRoles;
     }
 
-    public BsonDocument GetAccessibility(string RoleId)
+    public async Task<BsonDocument>? GetAccessibility(string RoleId)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("RoleId", RoleId);
-        BsonDocument documents = _collectionAcc.Find(filter).FirstOrDefault();
+        BsonDocument documents = await _collectionAcc.Find(filter).FirstOrDefaultAsync();
         return documents;
     }
     public async Task<BsonDocument>? Add(BsonDocument document, bool isLog)
@@ -56,13 +56,13 @@ public class MongoDbService : IMongoDBService
         return null;
     }
 
-    public BsonDocument GetById(string UId)
+    public async Task<BsonDocument>? GetById(string UId)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("UId", UId);
-        return _collection.Find(filter).FirstOrDefault();
+        return await _collection.Find(filter).FirstOrDefaultAsync();
     }
 
-    public BsonDocument? DelById(string UId)
+    public Task<BsonDocument>? DelById(string UId)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("UId", UId);
         _collection.FindOneAndDelete(filter);
@@ -74,13 +74,13 @@ public class MongoDbService : IMongoDBService
         var filter = Builders<BsonDocument>.Filter.Eq("UId", uId);
         var updateDefinition = new BsonDocument { { "$set", document } };
         await _collection.UpdateOneAsync(filter, updateDefinition);
-        return null;
+        return document;
     }
 
-    public AdminModel? Auth(string email, string password)
+    public async Task<AdminModel>? Auth(string email, string password)
     {
         var filter = Builders<BsonDocument>.Filter.Eq("Email", email);
-        var resUser = _collectionAdmins.Find(filter).FirstOrDefault();
+        var resUser = await _collectionAdmins.Find(filter).FirstOrDefaultAsync();
         if (resUser == null)
         {
             return null;

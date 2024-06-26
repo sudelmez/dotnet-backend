@@ -1,4 +1,6 @@
 namespace TodoApi2.Features.User;
+
+using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
@@ -29,6 +31,11 @@ public class User
     {
         var user = BsonSerializer.Deserialize<User>(document);
         return user;
+    }
+
+    internal async Task<User> FromBson(Task<BsonDocument>? task)
+    {
+        throw new NotImplementedException();
     }
 }
 

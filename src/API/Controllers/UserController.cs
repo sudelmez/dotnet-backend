@@ -7,43 +7,42 @@ namespace TodoApi2.API.Controllers;
 
 public class UserListController : ControllerBase
 {
-    //IUserService ile bağla
     private readonly ILogger<UserListController> _logger;
-    private IMongoDBService _mongoDbService;
+    private IUserService _userService;
     User _user = new User();
-    public UserListController(ILogger<UserListController> logger, IMongoDBService mongoDbService)
+    public UserListController(ILogger<UserListController> logger, IUserService userService)
     {
         _logger = logger;
-        _mongoDbService = mongoDbService;
+        _userService = userService;
     }
 
     [HttpPost("update")]
-    public IActionResult Update(User user)
+    public async Task<IActionResult> Update(User user)
     {
         var userB = _user.ToBson(user);
-        _mongoDbService.Update(userB, user.UId);
+        await _userService.Update(userB, user.UId);
         return Ok();
     }
 
     [HttpPost("delete")]
-    public IActionResult Delete(User request)
+    public async Task<IActionResult> Delete(User request)
     {
-        _mongoDbService.DelById(request.UId);
+        await _userService.Delete(request.UId);
         return Ok();
     }
 
     [HttpPost("add")]
-    public IActionResult Add(User request)
+    public async Task<IActionResult> Add(User request)
     {
         var user = _user.ToBson(request);
-        _mongoDbService.Add(user, false);
+        await _userService.Add(user);
         return Ok();
     }
 
     [HttpGet("get")]
-    public IEnumerable<User> Get()
+    public async Task<IEnumerable<User>> Get()
     {
-        var users = _mongoDbService.Get();
+        var users = await _userService.Get();
         _logger.LogInformation("Received users {users}", users);
         var userList = new List<User>();
         foreach (var doc in users)
@@ -57,9 +56,9 @@ public class UserListController : ControllerBase
     }
 
     [HttpGet("getById")]
-    public ActionResult<User> GetById(string UId)
+    public async Task<ActionResult<User>> GetById(string UId)
     {
-        User receivedUser = _user.FromBson(_mongoDbService.GetById(UId));
+        User receivedUser = await _user.FromBson(_userService.GetUser(UId));
         return receivedUser;
     }
 }
