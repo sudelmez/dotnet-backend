@@ -1,5 +1,5 @@
-using TodoApi2.Data;
 using TodoApi2.src.Core.Contracts;
+using TodoApi2.src.Infrastructure.Data;
 using TodoApi2.src.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
