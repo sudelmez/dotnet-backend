@@ -26,5 +26,11 @@ namespace TodoApi2.src.Core.Domain.Data
             var res = await _db.QueryAsync<ProductDto>(sql, new { UserId = id });
             return (List<ProductDto>?)res;
         }
+        public async Task<List<ProductDto>?> AddProducts(string id)
+        {
+            var sql = "SELECT ProductNo, PolicyNo, Premium, Plate,Insured FROM Product WHERE UserId = @UserId";
+            var res = await _db.QueryAsync<ProductDto>(sql, new { UserId = id });
+            return (List<ProductDto>?)res;
+        }
     }
 }
