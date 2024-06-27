@@ -1,4 +1,6 @@
+using System.Data.SqlClient;
 using TodoApi2.src.Core.Contracts;
+using TodoApi2.src.Core.Domain.Data;
 using TodoApi2.src.Infrastructure.Data;
 using TodoApi2.src.Infrastructure.Services;
 
@@ -22,7 +24,11 @@ builder.Services.AddTransient<IMongoDBService, MongoDbService>();
 builder.Services.AddTransient<IAccessibilityService, AccessibilityService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IAuthService, AuthService>();
+builder.Services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<System.Data.IDbConnection>(sp =>
+    new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

@@ -15,6 +15,9 @@ Content-Type: application/json
 GET {{TodoApi2_HostAddress}}/Accessibility/getAccessibility/
 Content-Type: application/json
 
+GET {{TodoApi2_HostAddress}}/Products/get/
+Content-Type: application/json
+
 POST {{TodoApi2_HostAddress}}/User/log
 Content-Type: application/json
 
