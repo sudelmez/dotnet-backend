@@ -1,3 +1,5 @@
+using TodoApi2.src.Core.Domain.Entities;
+
 public class ProductEntity
 {
     public string UserId { get; set; }
@@ -7,9 +9,9 @@ public class ProductEntity
     public string Insured { get; set; }
     public string Plate { get; set; }
     public DateTime CreatedDate { get; set; }
-    public string Statu { get; set; }
-    protected ProductEntity() { }
-    public ProductEntity(string userId, string productNo, string policyNo, float premium, string insured, string plate, DateTime date, string statu)
+    public ProductStatus Statu { get; set; }
+    protected ProductEntity() { } //orm maplemesi sağlanacak
+    public ProductEntity(string userId, string productNo, string policyNo, float premium, string insured, string plate, DateTime date)
     {
         UserId = userId;
         ProductNo = productNo;
@@ -18,6 +20,7 @@ public class ProductEntity
         Insured = insured;
         Plate = plate;
         CreatedDate = date;
-        Statu = statu;
+        Statu = ProductStatus.Opened;
+        //statusu buradan statik verdim enumdan çağırıp
     }
 }

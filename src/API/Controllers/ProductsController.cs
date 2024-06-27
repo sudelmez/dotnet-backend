@@ -17,14 +17,14 @@ namespace TodoApi2.src.API.Controllers
         }
 
         [HttpGet("get")]
-        public async Task<IEnumerable<ProductDto>> Get()
+        public async Task<IEnumerable<ProductEntity>> Get()
         {
             var products = await _db.GetProducts();
             return products;
         }
 
         [HttpGet("getById")]
-        public async Task<List<ProductDto>> GetById(string uId)
+        public async Task<List<ProductEntity>> GetById(string uId)
         {
             var products = await _db.GetProductsById(uId);
             return products;
