@@ -11,14 +11,12 @@ namespace TodoApi2.src.Core.Domain.Data
         {
             _db = db;
         }
-
         public async Task<IEnumerable<ProductEntity>> GetProducts()
         {
             var sql = "SELECT * FROM Product";
             var res = await _db.QueryAsync<ProductEntity>(sql);
             return res;
         }
-
         public async Task<IEnumerable<ProductEntity>?> GetProductsById(string id)
         {
             var sql = "SELECT * FROM Product WHERE UserId = @UserId";
@@ -29,11 +27,11 @@ namespace TodoApi2.src.Core.Domain.Data
             }
             return res;
         }
-        // public async Task<List<ProductEntity>?> AddProducts(string id)
-        // {
-        //     var sql = "SELECT ProductNo, PolicyNo, Premium, Plate,Insured FROM Product WHERE UserId = @UserId";
-        //     var res = await _db.QueryAsync<ProductDto>(sql, new { UserId = id });
-        //     return (List<ProductEntity>?)res;
-        // }
+        public async Task<List<ProductEntity>?> AddProducts(List<ProductEntity> product)
+        {
+            var sql = "SELECT ProductNo, PolicyNo, Premium, Plate,Insured FROM Product WHERE UserId = @UserId";
+            var res = await _db.QueryAsync<ProductDto>(sql);
+            return (List<ProductEntity>?)res;
+        }
     }
 }

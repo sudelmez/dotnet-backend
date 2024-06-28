@@ -21,13 +21,11 @@ namespace TodoApi2.src.Core.Domain.Repository
             var res = await _db.GetProductsById(id);
             return res.AsList();
         }
-        // public async Task<List<ProductEntity>?> AddProducts(string id)
-        // {
-        //     var sql = "SELECT ProductNo, PolicyNo, Premium, Plate,Insured FROM Product WHERE UserId = '{id}'";
-        //     var res = await _db.QueryAsync<ProductEntity>(sql);
-        //     return (List<ProductEntity>?)res;
-        // }
-
+        public async Task<List<ProductEntity>?> AddProducts(List<ProductEntity> product)
+        {
+            var res = await _db.AddProducts(product);
+            return res;
+        }
     }
 
 }

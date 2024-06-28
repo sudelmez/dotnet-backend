@@ -4,4 +4,5 @@ public interface IApplicationDbContext
 {
     Task<IEnumerable<ProductEntity>> GetProducts();
     Task<IEnumerable<ProductEntity>?> GetProductsById(string id);
+    Task<List<ProductEntity>?> AddProducts(List<ProductEntity> product);
 }

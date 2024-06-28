@@ -29,5 +29,12 @@ namespace TodoApi2.src.API.Controllers
             var products = await _productService.GetProductsById(uId);
             return products;
         }
+
+        // [HttpPost("add")]
+        // public async Task<IEnumerable<ProductDto>> Add(List<ProductDto> product)
+        // {
+        //     var products = await _productService.AddProduct(product);
+        //     return products;
+        // }
     }
 }

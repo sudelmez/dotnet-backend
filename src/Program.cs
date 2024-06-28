@@ -31,7 +31,6 @@ builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddAutoMapper(typeof(IStartup));
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>(), AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSingleton<System.Data.IDbConnection>(sp =>
     new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));

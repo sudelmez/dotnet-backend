@@ -9,18 +9,5 @@ public class ProductEntity
     public string Insured { get; set; }
     public string Plate { get; set; }
     public DateTime CreatedDate { get; set; }
-    public ProductStatus Statu { get; set; }
-    protected ProductEntity() { }
-    public ProductEntity(string userId, string productNo, string policyNo, float premium, string insured, string plate, DateTime date)
-    {
-        UserId = userId;
-        ProductNo = productNo;
-        PolicyNo = policyNo;
-        Premium = premium;
-        Insured = insured;
-        Plate = plate;
-        CreatedDate = date;
-        Statu = ProductStatus.Opened;
-        //statusu buradan statik verdim enumdan çağırıp
-    }
+    public int Statu { get; set; }
 }
