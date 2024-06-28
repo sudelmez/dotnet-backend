@@ -57,3 +57,5 @@
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/runtimes/win-x86/native/sni.dll
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/AutoMapper.dll
+/Users/sudeolmez/Desktop/TodoApi2/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

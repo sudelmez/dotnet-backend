@@ -41,8 +41,7 @@ public class UserListController : ControllerBase
                 // insured
                 "John Doe",
                 plate,
-                u.CreatedDate,
-                "1"
+                u.CreatedDate
             );
             productList.Add(product);
         }

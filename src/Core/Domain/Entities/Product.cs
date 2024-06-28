@@ -10,7 +10,7 @@ public class ProductEntity
     public string Plate { get; set; }
     public DateTime CreatedDate { get; set; }
     public ProductStatus Statu { get; set; }
-    protected ProductEntity() { } //orm maplemesi sağlanacak
+    protected ProductEntity() { }
     public ProductEntity(string userId, string productNo, string policyNo, float premium, string insured, string plate, DateTime date)
     {
         UserId = userId;
