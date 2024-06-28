@@ -19,8 +19,6 @@ namespace TodoApi2.src.API.Controllers
         public static string GenerateRandomPolicyNumber(int length)
         {
             var rndDigits = new System.Text.StringBuilder().Insert(0, "0123456789", length).ToString().ToCharArray();
-            Random random = new Random();
-            float premium = (float)(random.NextDouble() * 1000);
             return string.Join("", rndDigits.OrderBy(o => Guid.NewGuid()).Take(length));
         }
 
@@ -41,8 +39,26 @@ namespace TodoApi2.src.API.Controllers
         [HttpPost("add")]
         public async Task<IEnumerable<AddProductDto>> Add(List<AddProductDto> product)
         {
-            var products = await _productService.AddProduct(product);
+            var proList = new List<AddProductDto>();
+            foreach (var item in product)
+            {
+                AddProductDto proDto = new AddProductDto
+                {
+                    UserId = item.UserId,
+                    ProductNo = item.ProductNo,
+                    PolicyNo = GenerateRandomPolicyNumber(15),
+                    Premium = item.Premium,
+                    Insured = item.Insured,
+                    Plate = item.Plate,
+                    CreatedDate = DateTime.Now,
+                    Statu = item.Statu
+                };
+                proList.Add(proDto);
+            }
+
+            var products = await _productService.AddProduct(proList);
             return products;
         }
+
     }
 }

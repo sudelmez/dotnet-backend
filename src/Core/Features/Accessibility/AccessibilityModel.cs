@@ -10,6 +10,8 @@ public class Accessibility
     public bool DelUser { get; set; }
     public bool SeeUserList { get; set; }
     public bool SeeUserDetail { get; set; }
+    public bool AddPolicy { get; set; }
+    public bool SeePolicy { get; set; }
     public string RoleId { get; set; }
     public BsonDocument ToBson(Accessibility acc)
     {
@@ -18,6 +20,8 @@ public class Accessibility
         { "DelUser", acc.DelUser },
         { "SeeUserList", acc.SeeUserList },
         { "SeeUserDetail", acc.SeeUserDetail },
+        { "AddPolicy", acc.AddPolicy },
+        { "SeePolicy", acc.SeePolicy },
         { "RoleId", acc.RoleId }
     };
         return BAcc;
