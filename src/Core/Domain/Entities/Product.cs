@@ -1,5 +1,3 @@
-using TodoApi2.src.Core.Domain.Entities;
-
 public class ProductEntity
 {
     public string UserId { get; set; }
