@@ -16,6 +16,14 @@ namespace TodoApi2.src.API.Controllers
             _logger = logger;
         }
 
+        public static string GenerateRandomPolicyNumber(int length)
+        {
+            var rndDigits = new System.Text.StringBuilder().Insert(0, "0123456789", length).ToString().ToCharArray();
+            Random random = new Random();
+            float premium = (float)(random.NextDouble() * 1000);
+            return string.Join("", rndDigits.OrderBy(o => Guid.NewGuid()).Take(length));
+        }
+
         [HttpGet("get")]
         public async Task<IEnumerable<ProductDto>> Get()
         {
@@ -30,11 +38,11 @@ namespace TodoApi2.src.API.Controllers
             return products;
         }
 
-        // [HttpPost("add")]
-        // public async Task<IEnumerable<ProductDto>> Add(List<ProductDto> product)
-        // {
-        //     var products = await _productService.AddProduct(product);
-        //     return products;
-        // }
+        [HttpPost("add")]
+        public async Task<IEnumerable<AddProductDto>> Add(List<AddProductDto> product)
+        {
+            var products = await _productService.AddProduct(product);
+            return products;
+        }
     }
 }

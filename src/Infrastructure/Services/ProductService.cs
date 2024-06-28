@@ -25,9 +25,9 @@ namespace TodoApi2.src.Infrastructure.Services
             var mappedList = _mapper.Map<List<ProductEntity>, List<ProductDto>>(products);
             return mappedList;
         }
-        public async Task<List<ProductDto>> AddProduct(List<ProductDto> product)
+        public async Task<List<AddProductDto>> AddProduct(List<AddProductDto> product)
         {
-            var mappedList = _mapper.Map<List<ProductDto>, List<ProductEntity>>(product);
+            var mappedList = _mapper.Map<List<AddProductDto>, List<AddProductEntity>>(product);
             await _productReppository.AddProducts(mappedList);
             return product;
         }

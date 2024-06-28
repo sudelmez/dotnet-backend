@@ -4,7 +4,7 @@ namespace TodoApi2.src.Core.Contracts
     {
         Task<List<ProductDto>> GetProducts();
         Task<List<ProductDto>> GetProductsById(string id);
-        Task<List<ProductDto>> AddProduct(List<ProductDto> product);
+        Task<List<AddProductDto>> AddProduct(List<AddProductDto> product);
     }
 
 }

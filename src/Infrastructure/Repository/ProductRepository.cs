@@ -21,7 +21,7 @@ namespace TodoApi2.src.Core.Domain.Repository
             var res = await _db.GetProductsById(id);
             return res.AsList();
         }
-        public async Task<List<ProductEntity>?> AddProducts(List<ProductEntity> product)
+        public async Task<List<AddProductEntity>?> AddProducts(List<AddProductEntity> product)
         {
             var res = await _db.AddProducts(product);
             return res;
