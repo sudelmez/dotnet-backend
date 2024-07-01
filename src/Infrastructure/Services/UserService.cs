@@ -17,7 +17,8 @@ namespace TodoApi2.src.Infrastructure.Services
         }
         public async Task<BsonDocument> Add(BsonDocument doc)
         {
-            return await _mongoDbService.Add(doc, false);
+            await _mongoDbService.Add(doc, false);
+            return doc;
         }
         public async Task<BsonDocument> Delete(string uId)
         {

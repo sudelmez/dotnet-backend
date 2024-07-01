@@ -37,11 +37,12 @@ public class UserListController : ControllerBase
     }
 
     [HttpPost("add")]
-    public async Task<IActionResult> Add(User request)
+    public async Task<ActionResult<User>> Add(User request)
     {
         var user = _user.ToBson(request);
-        await _userService.Add(user);
-        return Ok();
+        var u = await _userService.Add(user);
+        var fromBU = _user.FromBson(u);
+        return Ok(fromBU);
     }
 
     [HttpGet("get")]
