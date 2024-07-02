@@ -30,10 +30,14 @@ namespace TodoApi2.src.API.Controllers
         }
 
         [HttpGet("getById")]
-        public async Task<IEnumerable<ProductDto>> GetById(string uId)
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetById(string uId)
         {
             var products = await _productService.GetProductsById(uId);
-            return products;
+            if (products == null)
+            {
+                return NotFound();
+            }
+            return Ok(products);
         }
 
         [HttpPost("add")]
@@ -42,6 +46,10 @@ namespace TodoApi2.src.API.Controllers
             var proList = new List<AddProductDto>();
             foreach (var item in product)
             {
+                if (!ModelState.IsValid)
+                {
+                    return (IEnumerable<AddProductDto>)BadRequest(ModelState);
+                }
                 AddProductDto proDto = new AddProductDto
                 {
                     UserId = item.UserId,

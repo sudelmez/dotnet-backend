@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoApi2.src.Core.Contracts;
 using TodoApi2.Features.User;
+using System.Reflection.Metadata;
+using MongoDB.Bson;
 namespace TodoApi2.src.API.Controllers;
 [Route("[controller]")]
 [ApiController]
@@ -20,7 +22,14 @@ public class UserListController : ControllerBase
     [HttpPost("update")]
     public async Task<IActionResult> Update(User user)
     {
-        var userB = _user.ToBson(user);
+        var userB = new BsonDocument{
+        { "UId", user.UId },
+        { "Name", user.Name },
+        { "LastName", user.LastName },
+        { "Client", user.Client },
+        { "AuthorizedProducts",new BsonArray(user.AuthorizedProducts)},
+        { "CreatedDate", DateTime.Now },
+    };
         await _userService.Update(userB, user.UId);
         return Ok();
     }
@@ -64,8 +73,8 @@ public class UserListController : ControllerBase
     [HttpGet("getById")]
     public async Task<ActionResult<User>> GetById(string UId)
     {
-        var user = _userService.GetUser(UId);
-        User receivedUser = await _user.FromBson(user);
+        var user = await _userService.GetUser(UId);
+        User receivedUser = MongoDB.Bson.Serialization.BsonSerializer.Deserialize<User>(user);
         return receivedUser;
     }
 }

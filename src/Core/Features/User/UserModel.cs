@@ -32,10 +32,5 @@ public class User
         var user = BsonSerializer.Deserialize<User>(document);
         return user;
     }
-
-    internal async Task<User> FromBson(Task<BsonDocument>? task)
-    {
-        throw new NotImplementedException();
-    }
 }
 
