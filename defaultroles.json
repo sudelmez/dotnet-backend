@@ -1,0 +1,24 @@
+[
+    {
+    "RoleId" : "1",
+    "RoleName": "admin"
+},
+    {
+    "RoleId" : "2",
+    "RoleName": "user"
+},
+
+
+{
+    "AddUser":true,
+    "DelUser":true,
+    "SeeUserList":true,
+    "SeeUserDetail":true,
+    "RoleId":"1"
+},{
+    "AddUser":false,
+    "DelUser":false,
+    "SeeUserList":true,
+    "SeeUserDetail":false,
+    "RoleId":"2"
+}]

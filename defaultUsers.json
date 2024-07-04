@@ -1,80 +1,90 @@
 [
     {
-        "Id": 1,
-        "Email": null,
+        "UId": "1",
         "Name": "John",
-        "Password": null,
         "LastName": "Doe",
-        "Token": null,
+        "Token": "12345",
         "Client": "Hepiyi",
         "AuthorizedProducts": [
-            "101,104"
+            "101"
         ],
-        "CreatedDate": "02/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 2,
-        "Email": null,
+        "UId": "2",
         "Name": "Mary",
-        "Password": null,
         "LastName": "Jane",
-        "Token": null,
+        "Token": "23245",
         "Client": "Aksigorta",
         "AuthorizedProducts": [
-            "101,104"
+            "102,103"
         ],
-        "CreatedDate": "02/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 5,
-        "Email": null,
-        "Name": "Sude",
-        "Password": null,
+        "UId": "3",
+        "Name": "Hakan",
         "LastName": "Olmez",
-        "Token": null,
-        "Client": "Yapi Kredi",
-        "AuthorizedProducts": [
-            "103,104"
-        ],
-        "CreatedDate": "05/06/2024"
-    },
-    {
-        "Id": 6,
-        "Email": null,
-        "Name": "Hatice",
-        "Password": null,
-        "LastName": "Yurek",
-        "Token": null,
-        "Client": "Deniz",
+        "Token": "53592",
+        "Client": "Hepiyi",
         "AuthorizedProducts": [
             "102"
         ],
-        "CreatedDate": "06/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 7,
-        "Email": null,
+        "UId": "5",
+        "Name": "Merve",
+        "LastName": "Olmez",
+        "Token": "69584",
+        "Client": "Casper",
+        "AuthorizedProducts": [
+            "101,102"
+        ],
+        "CreatedDate":"2024-06-12T08:20:35.497Z"
+    },
+    {
+        "UId": "6",
+        "Name": "Jackson",
+        "LastName": "Michel",
+        "Token": "98535",
+        "Client": "Aksigorta",
+        "AuthorizedProducts": [
+            "103"
+        ],
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
+    },
+    {
+        "UId": "7",
+        "Name": "Hatice",
+        "LastName": "Yurek",
+        "Token": "95356",
+        "Client": "Deniz",
+        "AuthorizedProducts": [
+            "101,102,103"
+        ],
+        "CreatedDate":"2024-06-12T08:20:35.497Z"
+    },
+    {
+        "UId": "8",
         "Name": "Bella",
-        "Password": null,
         "LastName": "Brown",
-        "Token": null,
+        "Token": "85745",
         "Client": "Akbank",
         "AuthorizedProducts": [
-            "104"
+            "103"
         ],
-        "CreatedDate": "07/06/2024"
+        "CreatedDate":"2024-06-12T08:20:35.497Z"
     },
     {
-        "Id": 8,
-        "Email": null,
+        "UId": "9",
         "Name": "Cemil",
-        "Password": null,
         "LastName": "Brown",
-        "Token": null,
+        "Token": "58664",
         "Client": "Akbank",
         "AuthorizedProducts": [
-            "104"
+            "102"
         ],
-        "CreatedDate": "07/06/2024"
+        "CreatedDate": "2024-06-12T08:20:35.497Z"
     }
 ]
